@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+			form .text {
+				display: inline-block;
+				border: 0;
+				width: 260px;
+				height: 35px;
+				font-size: 14px;
+				outline: none;
+				
+				border: 2px solid #01af63;
+			}
+			
+			form .search {
+				
+				width: 90px;
+				height: 38px;
+				border: 0;
+				outline: none;
+				cursor: pointer;
+				text-align: center;
+				line-height: 40px;
+				background-color: #01af63;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+	        	function test(){
+           			window.open("http://192.168.31.234:5000/sea/"+document.getElementById("inp").value+"/");
+ 		 }
+		</script>
+		<form target="_blank" method="get" action="https://www.baidu.com/s">
+			<input id= "inp" type="text" placeholder="请输入关键词" name="s" class="text" />
+			<input type="button" value="搜索" class="search" name="s2" onclick="test()">
+
+		</form>
+	</body>
+    </div>
+    <div class="description"><br><br><br><br><br><br><br><br><br><br>© 2022思知搜索 版权所有
+    </div>
+</html>
