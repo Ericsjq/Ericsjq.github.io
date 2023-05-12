@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+ <head>
+
+<style type="text/css"></style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<title>SKchtat语言模型-AI续写 | 小思框架</title>
+</head>
+ <body style="overflow:hidden">
+<h1>SKchtat语言模型-AI续写</h1>
+
+<div id="output-box"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+function btn() {
+var inputBox =document.getElementById("input-box");
+var outputBox =document.getElementById("output-box");
+var inp =inputBox.value;//要续写的原文内容
+if (inp!==''){
+var apiUrl ="https://4147093qp2.imdo.co/zhxxapi?inp="+inp;//AI续写接口地址
+outputBox.innerHTML='AI状态：正在运行（大约需要90秒）'
+var data ={};
+data.inp =inp;//将原文内容存入data对象中
+var xhr =axios.get(apiUrl);//发送POST请求，获取返回结果
+ xhr.then(function (response) {
+
+var result =response.data;//获取返回结果中的input、text和Error字段
+if (0){
+//var outputHtml ="<p>错误</p>";
+outputBox.innerHTML='AI状态：空闲';
+outputBox.innerHTML =outputHtml;
+return '错误';
+}
+ if (result.Error !=="None") {//如果有错误，显示错误信息并清空多行文本输入框
+outputBox.innerHTML='AI状态：空闲';
+ outputBox.innerHTML ='错误：'+errorMsg;
+inputBox.value ="";//清空多行文本输入框
+}else {//如果没有错误，显示续写结果并添加到多行文本输入框里
+//outputBox.innerHTML +=outputHtml;
+outputBox.innerHTML='AI状态：空闲';
+inputBox.value=inp+result.text;
+
+}
+
+});
+}
+}
+</script>
+<textarea id="input-box" style="width: 99%; height: 397px;"></textarea>
+<button onclick="btn()" style="width: 18%; height: 30px">生成</button>
+ </body>
+<br><br>
+<p>思小说&AI小思框架</p>
+<p>AI生成的所有内容不代表小思框架立场</p>
+</html>
